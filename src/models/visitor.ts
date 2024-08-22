@@ -1,4 +1,3 @@
-import {sql} from "@vercel/postgres";
 
 class Visitor {
     ip: string;
@@ -11,10 +10,6 @@ class Visitor {
         this.userAgent = userAgent;
         this.date = date;
         this.page = page;
-    }
-
-    async save () {
-        await sql`insert into visitors (ip, useragent, date, page) values (${this.ip}, ${this.userAgent}, ${this.date.toISOString()}, ${this.page})`;
     }
 }
 

@@ -1,5 +1,3 @@
-import {sql} from "@vercel/postgres";
-
 export class CalendarEvent {
     id?: string
     name: string;
@@ -14,33 +12,6 @@ export class CalendarEvent {
         this.admin_id = creatorID;
     }
 
-    static async fromDB(next?: boolean): Promise<CalendarEvent[]> {
-        if (next) {
-            // return only events that are in the future
-            const rows = await sql`SELECT * FROM calendar WHERE date >= NOW()`;
-
-            return rows.rows.map((row: any) => {
-                const e = new CalendarEvent(row.name, row.date, row.description, row.admin_id);
-                e.id = row.id;
-                return e;
-            });
-        }
-
-        const rows = await sql`SELECT * FROM calendar`;
-        return rows.rows.map((row: any) => {
-            const e = new CalendarEvent(row.name, row.date, row.description, row.admin_id);
-            e.id = row.id;
-            return e;
-        });
-    }
-
-    async save(): Promise<void> {
-        if(this.id) {
-            await sql`UPDATE calendar SET name=${this.name}, date=${this.date.toISOString()}, description=${this.description}, admin_id=${this.admin_id} WHERE id=${this.id}`;
-        } else {
-            await sql`INSERT INTO calendar (name, date, description, admin_id) VALUES (${this.name}, ${this.date.toISOString()}, ${this.description}, ${this.admin_id})`;
-        }
-    }
 
     toJSON(): any {
         return {

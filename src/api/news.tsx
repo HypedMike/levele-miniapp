@@ -8,7 +8,9 @@ interface NewsInterface {
 const newsAPI: NewsInterface = {
     getNews: async () => {
         try {
-            const res = await fetch(`${API_URL}/news`);
+            const res = await fetch(`${API_URL}/news`, {
+                mode: "no-cors",
+            });
             const json = await res.json();
             return NewsModel.fromJsonToList(json);
         }

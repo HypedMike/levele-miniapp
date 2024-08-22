@@ -1,26 +1,5 @@
-import { QueryResult, sql } from "@vercel/postgres";
-
 export class PolyRoom {
     entries: PolyRoomEntry[] = [];
-    
-    static async fromDB(): Promise<PolyRoom> {
-        const room = new PolyRoom();
-
-        // query db
-        const docs: QueryResult = await sql`SELECT day, hour, id, name, "createdAt" FROM poly_room_entries;`;
-
-        // check if there are no entries
-        if (docs.rows.length === 0) {
-            return room;
-        }
-
-        // create entries
-        for (const doc of docs.rows) {
-            room.entries.push(PolyRoomEntry.fromJSON(doc));
-        }
-
-        return room;
-    }
 
     /**
      * 
@@ -66,19 +45,6 @@ export class PolyRoom {
         }
 
         return groups;
-    }
-
-    /*
-    * Insert a new entry in the database
-    */
-    static async insertEntry(day: string, hour: string, name?: string): Promise<void> {
-        // insert entry
-        await sql`INSERT INTO poly_room_entries (name, day, hour) VALUES (${name ?? ""}, ${day}, ${hour});`;
-    }
-
-    static async deleteEntry(id: string): Promise<void> {
-        // delete entry
-        await sql`DELETE FROM poly_room_entries WHERE id = ${id};`;
     }
     
 }
