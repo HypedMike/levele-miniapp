@@ -1,4 +1,4 @@
-import {useInitData, useWebApp, WebAppUser} from "@vkruglikov/react-telegram-web-app";
+import {useInitData, WebAppUser} from "@vkruglikov/react-telegram-web-app";
 import {useEffect, useState} from "react";
 
 export const MainMenu = () => {
