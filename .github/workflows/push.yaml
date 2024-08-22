@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Deploy React to GitHub Pages
 on:
   push:
     branches: [ master ]
@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build and Deploy React app to GitHub Pages
-        uses: omkartapale/react-deployment-gh-pages@v1.0.0
+      - name: Deploy React to GitHub Pages
+        uses: bitovi/github-actions-react-to-github-pages@v1.2.4
