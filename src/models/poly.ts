@@ -9,7 +9,7 @@ export class PolyRoom {
         day: Date,
         hours: boolean[]
     }[] {
-        let groups: {
+        const groups: {
             day: Date,
             hours: boolean[]
         }[] = [];
@@ -23,7 +23,7 @@ export class PolyRoom {
             // get the day
             const day = entry.getTimestamp();
             // check if the day is already in the groups
-            let found = groups.find(group => {
+            const found = groups.find(group => {
                 return compareDatesDumb(group.day, day);
             });
 
@@ -73,6 +73,9 @@ export class PolyRoomEntry {
     }
 
     static fromJSON(json: any): PolyRoomEntry {
+        if (!json) {
+            return new PolyRoomEntry("", "", "");
+        }
         const entry = new PolyRoomEntry(json.day, json.hour, json.name);
         entry.id = json.id;
         entry.createdAt = new Date(json.createdAt);

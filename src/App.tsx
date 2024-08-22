@@ -1,24 +1,20 @@
 import './App.css'
 import {MainMenu} from "./components/main_menu/main.tsx";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
 import {GetNewsView} from "./components/news/main.tsx";
+import {AddNewsView} from "./components/news/add_news.tsx";
 
 function App() {
 
-    const router = createBrowserRouter([
-        {
-            path: "/",
-            element: <MainMenu />
-        },
-        {
-            path: "/news",
-            element: <GetNewsView />
-        }
-    ])
-
   return (
     <>
-        <RouterProvider router={router} />
+        <HashRouter basename={"/"}>
+            <Routes>
+                <Route path="/" element={<MainMenu />} />
+                <Route path="/news" element={<GetNewsView />} />
+                <Route path="/send_news" element={<AddNewsView />} />
+            </Routes>
+        </HashRouter>
     </>
   )
 }
