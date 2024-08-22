@@ -2,6 +2,7 @@
   "name": "levele-miniapp",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://hypedmike.github.io/levele-miniapp/",
   "type": "module",
   "scripts": {
     "dev": "vite",
