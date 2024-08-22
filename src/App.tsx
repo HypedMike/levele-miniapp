@@ -1,16 +1,24 @@
 import './App.css'
 import {MainMenu} from "./components/main_menu/main.tsx";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {GetNewsView} from "./components/news/main.tsx";
 
 function App() {
 
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <MainMenu />
+        },
+        {
+            path: "/news",
+            element: <GetNewsView />
+        }
+    ])
 
   return (
     <>
-        <h1>San Donato</h1>
-        <h2>
-            Telegram toolkit, no login required
-        </h2>
-        <MainMenu/>
+        <RouterProvider router={router} />
     </>
   )
 }
