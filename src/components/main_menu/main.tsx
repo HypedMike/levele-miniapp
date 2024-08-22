@@ -1,8 +1,16 @@
-import {useWebApp} from "@vkruglikov/react-telegram-web-app";
+import {useInitData, useWebApp, WebAppUser} from "@vkruglikov/react-telegram-web-app";
+import {useEffect, useState} from "react";
 
 export const MainMenu = () => {
 
-    const webApp = useWebApp();
+    const [initData] = useInitData();
+    const [user, setUser] = useState<WebAppUser>()
+
+    useEffect(() => {
+        if(initData){
+            setUser(initData.user)
+        }
+    }, [initData]);
 
     return (
         <div>
@@ -10,7 +18,7 @@ export const MainMenu = () => {
             <p>Click on the menu items to see the different pages.</p>
             <div>
                 {
-                    webApp.user ? webApp.user.first_name : "No user"
+                    user ? user.first_name : "unknown"
                 }
             </div>
         </div>
