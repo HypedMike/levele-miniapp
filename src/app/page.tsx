@@ -8,7 +8,7 @@ export default function Home() {
     <main className={styles.main}>
         <header className={styles.header}>
             <h1>
-                San Donato
+                San Donato <i>v1</i>
                 <p>
                     ToolKit
                 </p>
