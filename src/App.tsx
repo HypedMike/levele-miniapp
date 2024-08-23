@@ -5,8 +5,7 @@ import {GetNewsView} from "./components/news/main.tsx";
 import {AddNewsView} from "./components/news/add_news.tsx";
 
 function App() {
-
-  return (
+    return (
     <>
         <HashRouter basename={"/"}>
             <Routes>
