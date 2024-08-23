@@ -9,34 +9,24 @@ const MainMenu = () => {
         icon: string
     }[] = [
         {
-            text: 'Home',
-            link: '/',
-            icon: 'home'
-        },
-        {
-            text: 'About',
-            link: '/about',
+            text: 'Orari',
+            link: '/orari',
             icon: 'info'
         },
         {
-            text: 'Contact',
-            link: '/contact',
+            text: 'News',
+            link: '/news',
             icon: 'mail'
         },
         {
-            text: 'Login',
+            text: 'Catechismo',
             link: '/login',
             icon: 'login'
         },
         {
-            text: 'Register',
-            link: '/register',
+            text: 'Calendario',
+            link: '/calendario',
             icon: 'person_add'
-        },
-        {
-            text: 'Logout',
-            link: '/logout',
-            icon: 'logout'
         }
     ]
 
