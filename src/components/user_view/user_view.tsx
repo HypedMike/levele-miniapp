@@ -9,7 +9,9 @@ const UserView = () => {
     const [user, setUser] = useState<WebAppUser>()
 
     useEffect(() => {
+        console.log('initData', initData)
         if (initData) {
+            console.log('user', user)
             setUser(initData.user)
         }
     }, [initData]);
